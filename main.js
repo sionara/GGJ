@@ -19,10 +19,10 @@ const entities_to_delete = [];
 
 //Object containing the state of input keys.
 const input_states = {
-  "KeyW" : {keydown : false},
-  "KeyS" : {keydown : false},
-  "KeyA" : {keydown : false},
-  "KeyD" : {keydown : false},
+  "KeyW": { keydown: false },
+  "KeyS": { keydown: false },
+  "KeyA": { keydown: false },
+  "KeyD": { keydown: false },
 };
 
 
@@ -54,16 +54,20 @@ window.onload = _ => {
 
 
   //Set the internal resolution of the canvas.
-  canvas.width = 1366;
-  canvas.height = 768;
+  let height = $(window).height();
+  //console.log("height", height);
+  let width = $(window).width();
+  //console.log("width", width);
+  canvas.width = width;
+  canvas.height = height;
 
 
   //Attach input event listeners
   document.addEventListener('keyup', e => {
-    input_states[e.code] = {keydown: false};
+    input_states[e.code] = { keydown: false };
   });
   document.addEventListener('keydown', e => {
-    input_states[e.code] = {keydown: true};
+    input_states[e.code] = { keydown: true };
   });
 
 
@@ -109,7 +113,7 @@ function updateMovement(){
 }
 
 
-function updateSize(){
+function updateSize() {
 
 }
 
@@ -118,22 +122,23 @@ function processInput(){
   if(input_states.KeyW.keydown === true){
     player.y--;
   }
-  if(input_states.KeyS.keydown === true){
+  if (input_states.KeyS.keydown === true) {
     player.y++;
   }
-  if(input_states.KeyA.keydown === true){
+  if (input_states.KeyA.keydown === true) {
     player.x--;
   }
-  if(input_states.KeyD.keydown === true){
+  if (input_states.KeyD.keydown === true) {
     player.x++;
   }
 }
 
 
-function render(){
+function render() {
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
 
   console.log(entities);
+
 
   Object.values(entities).forEach(e => {
     if(e.visible === true){
