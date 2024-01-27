@@ -15,10 +15,10 @@ const entities = [];
 
 //Object containing the state of input keys.
 const input_states = {
-  "KeyW" : {keydown : false},
-  "KeyS" : {keydown : false},
-  "KeyA" : {keydown : false},
-  "KeyD" : {keydown : false},
+  "KeyW": { keydown: false },
+  "KeyS": { keydown: false },
+  "KeyA": { keydown: false },
+  "KeyD": { keydown: false },
 };
 
 
@@ -29,16 +29,20 @@ window.onload = _ => {
 
 
   //Set the internal resolution of the canvas.
-  canvas.width = 1366;
-  canvas.height = 768;
+  let height = $(window).height();
+  //console.log("height", height);
+  let width = $(window).width();
+  //console.log("width", width);
+  canvas.width = width; //try to get game to natively
+  canvas.height = height; //adjust to user's screen size
 
 
   //Attach input event listeners
   document.addEventListener('keyup', e => {
-    input_states[e.code] = {keydown: false};
+    input_states[e.code] = { keydown: false };
   });
   document.addEventListener('keydown', e => {
-    input_states[e.code] = {keydown: true};
+    input_states[e.code] = { keydown: true };
   });
 
 
@@ -62,41 +66,41 @@ window.onload = _ => {
 };
 
 
-function updateMovement(){
+function updateMovement() {
   x += 1;
 }
 
 
-function updateSize(){
+function updateSize() {
 
 }
 
 
-function processInput(){
+function processInput() {
   console.log(input_states.KeyR);
 
 
-  if(input_states.KeyW.keydown === true){
+  if (input_states.KeyW.keydown === true) {
     player.y--;
   }
-  if(input_states.KeyS.keydown === true){
+  if (input_states.KeyS.keydown === true) {
     player.y++;
   }
-  if(input_states.KeyA.keydown === true){
+  if (input_states.KeyA.keydown === true) {
     player.x--;
   }
-  if(input_states.KeyD.keydown === true){
+  if (input_states.KeyD.keydown === true) {
     player.x++;
   }
 }
 
 
-function render(){
+function render() {
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
 
 
   entities.forEach(e => {
-    if(e.visible === true){
+    if (e.visible === true) {
       canvas_context.fillStyle = "green";
       canvas_context.fillRect(e.x, e.y, e.width, e.height);
     }
@@ -104,7 +108,7 @@ function render(){
 }
 
 
-function gameLoop(){
+function gameLoop() {
   processInput();
 
 
