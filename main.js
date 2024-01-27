@@ -1,30 +1,117 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import {setupEngine} from './engine.js';
+let x = null;
 
 
-//Setup the HTML
-document.querySelector('#app').innerHTML = `
-  <!--
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-  -->
-  <canvas id="stage"></canvas>
-`;
+let canvas_context = null;
+let canvas = null;
 
 
-setupEngine(document.querySelector("#stage"));
+//Global pointer to the player entity.
+let player = null;
+
+
+//List of entites in the game.
+const entities = [];
+
+
+//Object containing the state of input keys.
+const input_states = {
+  "KeyW" : {keydown : false},
+  "KeyS" : {keydown : false},
+  "KeyA" : {keydown : false},
+  "KeyD" : {keydown : false},
+};
+
+
+
+window.onload = _ => {
+  canvas = document.querySelector("#stage");
+  canvas_context = canvas.getContext("2d");
+
+
+  //Set the internal resolution of the canvas.
+  canvas.width = 1366;
+  canvas.height = 768;
+
+
+  //Attach input event listeners
+  document.addEventListener('keyup', e => {
+    input_states[e.code] = {keydown: false};
+  });
+  document.addEventListener('keydown', e => {
+    input_states[e.code] = {keydown: true};
+  });
+
+
+  //Create player entity.
+  player = {
+    name: "Box",
+    visible: true,
+    height: 100,
+    width: 100,
+    x: 0,
+    y: 0,
+  };
+
+
+  //Add this to the list of entities.
+  entities.push(player);
+
+
+  //Start the gameloop.
+  gameLoop();
+};
+
+
+function updateMovement(){
+  x += 1;
+}
+
+
+function updateSize(){
+
+}
+
+
+function processInput(){
+  console.log(input_states.KeyR);
+
+
+  if(input_states.KeyW.keydown === true){
+    player.y--;
+  }
+  if(input_states.KeyS.keydown === true){
+    player.y++;
+  }
+  if(input_states.KeyA.keydown === true){
+    player.x--;
+  }
+  if(input_states.KeyD.keydown === true){
+    player.x++;
+  }
+}
+
+
+function render(){
+  canvas_context.clearRect(0, 0, canvas.width, canvas.height);
+
+
+  entities.forEach(e => {
+    if(e.visible === true){
+      canvas_context.fillStyle = "green";
+      canvas_context.fillRect(e.x, e.y, e.width, e.height);
+    }
+  });
+}
+
+
+function gameLoop(){
+  processInput();
+
+
+  updateMovement();
+  updateSize();
+
+
+  render();
+  requestAnimationFrame(gameLoop);
+}
