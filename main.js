@@ -104,7 +104,7 @@ window.onload = _ => {
 function updateMovement(){
   bullet.x -= 10;
   wall.x -= 2;
-
+}
 function spawnEntities(){
   addEntity("enemy-" + Date.now(), {
     visible: true,
