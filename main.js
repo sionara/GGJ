@@ -2,9 +2,9 @@
 let canvas_context = null;
 let canvas = null;
 
-
 //Global pointer to the player entity.
 let player = null;
+
 
 let osap_wall = null;
 
@@ -24,7 +24,6 @@ const entities = {};
 //deleting entities while another system is processing the entities.
 const entities_to_add = [];
 const entities_to_delete = [];
-
 
 //Object containing the state of input keys.
 const input_states = {
@@ -61,13 +60,11 @@ window.onload = _ => {
   canvas = document.querySelector("#stage");
   canvas_context = canvas.getContext("2d");
 
-
   //Set the internal resolution of the canvas.
   let height = $(window).height();
   let width = $(window).width();
   canvas.width = width;
   canvas.height = height;
-
 
   //Attach input event listeners
   document.addEventListener('keyup', e => {
@@ -76,7 +73,6 @@ window.onload = _ => {
   document.addEventListener('keydown', e => {
     input_states[e.code] = { keydown: true };
   });
-
 
   //Create player entity.
   player = addEntity("box", {
@@ -91,7 +87,6 @@ window.onload = _ => {
     spriteHeight: 32,
     spriteWidth: 32,
   });
-
 
   //Start the gameloop.
   gameLoop();
@@ -116,6 +111,8 @@ function spawnWalls(){
     });
   }
 }
+
+function updateSize() {}
 
 
 function spawnBullets(){
@@ -210,10 +207,64 @@ function processInput(){
   }
 }
 
+const background = {
+  floorX: 0,
+  floorY: 0,
+  cloudX: 0,
+  cloudY: 0,
+};
+
+
+function drawBackground() {
+  canvas_context.clearRect(0, 0, canvas.width, canvas.height);
+
+  const torontoLayer = new Image();
+  torontoLayer.src = "images/layer-2.png";
+  const cloudLayer = new Image();
+  cloudLayer.src = "images/layer-3.png";
+  const floorLayer = new Image();
+  floorLayer.src = "images/layer-5.png";
+
+  background.floorX -= 5;
+  background.cloudX -= 1;
+
+  canvas_context.drawImage(torontoLayer, 0, 0, 2400, 720);
+  canvas_context.drawImage(
+    cloudLayer,
+    background.cloudX,
+    background.cloudY,
+    2400,
+    720
+  );
+  canvas_context.drawImage(cloudLayer, 2400 + background.cloudX, 0, 2400, 720);
+  canvas_context.drawImage(
+    floorLayer,
+    background.floorX,
+    background.floorY,
+    2400,
+    720
+  );
+  canvas_context.drawImage(
+    floorLayer,
+    2400 + background.floorX,
+    background.floorY,
+    2400,
+    720
+  );
+  // Reset the background once the first image is out of bounds
+  if (background.floorX < -2400) {
+    background.floorX = 0;
+  }
+  if (background.cloudX < -2400) {
+    background.cloudX = 0;
+  }
+}
+
 
 function render() {
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
 
+  drawBackground();
 
   Object.values(entities).forEach(e => {
     if(e.visible === true){
@@ -262,7 +313,7 @@ function gameLoop(){
   spawnWalls();
   updateMovement();
 
-
+  
   render();
   updateEntities();
   requestAnimationFrame(gameLoop);
