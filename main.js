@@ -52,10 +52,31 @@ window.onload = _ => {
     y: 0,
   };
 
+  //create bullet entity.
+  bullet = {
+    name: "Bullet",
+    visible: true,
+    height: 50,
+    width: 50,
+    x: canvas.width,
+    y: Math.random() * canvas.height,
+    image: null,
+  }
+
+  wall = {
+    name: "Wall",
+    visible: true,
+    height: 300,
+    width: 500,
+    x: canvas.width,
+    y: 0
+  }
+
 
   //Add this to the list of entities.
   entities.push(player);
-
+  entities.push(bullet);
+  entities.push(wall);
 
   //Start the gameloop.
   gameLoop();
@@ -63,7 +84,8 @@ window.onload = _ => {
 
 
 function updateMovement(){
-  x += 1;
+  bullet.x -= 10;
+  wall.x -= 2;
 }
 
 
