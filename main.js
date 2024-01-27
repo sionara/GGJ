@@ -6,9 +6,18 @@ let canvas = null;
 //Global pointer to the player entity.
 let player = null;
 
+let osap_wall = null;
+
+
+//Balance settings
+const BULLET_SPAWN_RATE = 0.1;
+const SHINY_BULLET_SPAWN_RATE = 0.3;
+const WALLS_SPAWN_RATE = 0.01;
+
 
 //List of entites in the game.
 const entities = {};
+
 
 //These are required to manage adding and deleting entities in the game.
 //Entities are added at the end of the frame to avoid bugs arising from
@@ -76,7 +85,11 @@ window.onload = _ => {
     width: 100,
     x: 0,
     y: 0,
+    yVelocity: 0,
+    xVelocity: 0,
     spriteSrc: "./images/hotdog.png",
+    spriteHeight: 32,
+    spriteWidth: 32,
   });
 
 
@@ -85,50 +98,115 @@ window.onload = _ => {
 };
 
 
-function spawnEntities(){
+function spawnWalls(){
+  if(Math.random() < WALLS_SPAWN_RATE && osap_wall === null){
 
-  if(Math.random() > 0.1){
-
-    addEntity("bullet-" + Date.now(), {
+    osap_wall = addEntity("wall-" + Date.now(), {
       visible: true,
-      type: "bullet",
-      height: Math.random() * 100,
-      width: Math.random() * 100,
-      x: 0,
-      y: Math.random() * canvas.height,
-      spriteSrc: "./images/hotdog.png",
+      type: "wall",
+      height: 368,
+      width: 612,
+      x: canvas.width,
+      y: canvas.height - 368,
+      xVelocity: -5,
+      yVelocity: 0,
+      spriteSrc: "./images/osap.jpg",
+      spriteHeight: 368,
+      spriteWidth: 612,
     });
+  }
+}
+
+
+function spawnBullets(){
+
+  if(Math.random() < BULLET_SPAWN_RATE){
+
+    if(Math.random() < SHINY_BULLET_SPAWN_RATE){
+
+      addEntity("bullet-" + Date.now(), {
+        visible: true,
+        type: "bullet",
+        height: 183,
+        width: 288,
+        x: canvas.width,
+        y: Math.random() * canvas.height,
+        xVelocity: -20,
+        yVelocity: 0,
+        spriteSrc: "./images/car.png",
+        spriteHeight: 183,
+        spriteWidth: 288,
+      });
+
+    }
+    else {
+
+      addEntity("bullet-" + Date.now(), {
+        visible: true,
+        type: "bullet",
+        height: 50,
+        width: 50,
+        x: canvas.width,
+        y: Math.random() * canvas.height,
+        xVelocity: -10,
+        yVelocity: 0,
+        spriteSrc: "./images/hotdog.png",
+        spriteHeight: 32,
+        spriteWidth: 32,
+      });
+
+    }
+
   }
 }
 
 
 function updateMovement(){
   Object.values(entities).forEach(e => {
-    if(e.visible === true){
-      if(e.type === "bullet"){
 
-        if(e.x > 250){
-          deleteEntity(e.name);
-        }
-        e.x++;
+    if(e.visible === true){
+
+      e.x += e.xVelocity;
+      e.y += e.yVelocity;
+
+      if(e.type === "bullet"){
+        if(e.x < 100) deleteEntity(e.name);
       }
+
+      if(e.type === "wall"){
+        if(e.x < -300){
+
+          deleteEntity(e.name);
+          osap_wall = null;
+        }
+      }
+
     }
+    
+
   });
 }
 
 
 function processInput(){
   if(input_states.KeyW.keydown === true){
-    player.y--;
+    player.yVelocity = -10;
+  } else if (input_states.KeyS.keydown === true) {
+    player.yVelocity = 10;
   }
-  if (input_states.KeyS.keydown === true) {
-    player.y++;
+  else {
+    player.yVelocity = 0;
   }
+
+
   if (input_states.KeyA.keydown === true) {
-    player.x--;
+    player.xVelocity = -10;
+  } 
+  else if (input_states.KeyD.keydown === true) {
+    player.xVelocity = 10;
   }
-  if (input_states.KeyD.keydown === true) {
-    player.x++;
+  else {
+    player.xVelocity = 0;
   }
 }
 
@@ -148,7 +226,13 @@ function render() {
         sprite.src = e.spriteSrc;
 
 
-        canvas_context.drawImage(sprite, 0, 0, 32, 32, e.x, e.y, e.width, e.height);
+        canvas_context.drawImage(
+          sprite, 
+          0, 0, 
+          e.spriteWidth, e.spriteHeight, 
+          e.x, e.y, 
+          e.width, e.height
+        );
       }
     }
   });
@@ -174,7 +258,8 @@ function gameLoop(){
   processInput();
 
 
-  spawnEntities();
+  spawnBullets();
+  spawnWalls();
   updateMovement();
 
 
