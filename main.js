@@ -33,8 +33,8 @@ window.onload = _ => {
   //console.log("height", height);
   let width = $(window).width();
   //console.log("width", width);
-  canvas.width = width; //try to get game to natively
-  canvas.height = height; //adjust to user's screen size
+  canvas.width = width;
+  canvas.height = height;
 
 
   //Attach input event listeners
