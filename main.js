@@ -55,9 +55,7 @@ window.onload = _ => {
 
   //Set the internal resolution of the canvas.
   let height = $(window).height();
-  //console.log("height", height);
   let width = $(window).width();
-  //console.log("width", width);
   canvas.width = width;
   canvas.height = height;
 
@@ -72,12 +70,15 @@ window.onload = _ => {
 
 
   //Create player entity.
+  const image_sprite = new Image();
+  image_sprite.src = "./images/hotdog.png";
   player = addEntity("box", {
     visible: true,
     height: 100,
     width: 100,
     x: 0,
     y: 0,
+    sprite : image_sprite,
   });
 
 
@@ -87,14 +88,22 @@ window.onload = _ => {
 
 
 function spawnEntities(){
-  addEntity("enemy-" + Date.now(), {
-    visible: true,
-    type: "enemy",
-    height: Math.random() * 100,
-    width: Math.random() * 100,
-    x: 0,
-    y: Math.random() * canvas.height,
-  });
+
+  if(Math.random() > 0.3){
+
+    const image_sprite = new Image();
+    image_sprite.src = "./images/hotdog.png";
+
+    addEntity("enemy-" + Date.now(), {
+      visible: true,
+      type: "enemy",
+      height: Math.random() * 100,
+      width: Math.random() * 100,
+      x: 0,
+      y: Math.random() * canvas.height,
+      sprite: image_sprite,
+    });
+  }
 }
 
 
@@ -110,11 +119,6 @@ function updateMovement(){
       }
     }
   });
-}
-
-
-function updateSize() {
-
 }
 
 
@@ -137,13 +141,16 @@ function processInput(){
 function render() {
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
 
-  console.log(entities);
-
 
   Object.values(entities).forEach(e => {
     if(e.visible === true){
-      canvas_context.fillStyle = "green";
-      canvas_context.fillRect(e.x, e.y, e.width, e.height);
+      canvas_context.strokeStyle = "green";
+      canvas_context.strokeRect(e.x, e.y, e.width, e.height);
+
+
+      if(e.hasOwnProperty("sprite")){
+        canvas_context.drawImage(e.sprite, 0, 0, 32, 32, e.x, e.y, e.width, e.height);
+      }
     }
   });
 }
@@ -170,7 +177,6 @@ function gameLoop(){
 
   spawnEntities();
   updateMovement();
-  updateSize();
 
 
   render();
