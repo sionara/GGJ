@@ -5,6 +5,8 @@ let canvas = null;
 
 //Global pointer to the player entity.
 let player = null;
+let wall = null;
+let bullet = null;
 
 
 //List of entites in the game.
@@ -25,9 +27,6 @@ const input_states = {
   "KeyD": { keydown: false },
 };
 
-
-
-
 //Global functions
 function addEntity(entity_name, components_object){
   const entity = {
@@ -44,8 +43,6 @@ function addEntity(entity_name, components_object){
 function deleteEntity(entity_name){
   entities_to_delete.push(entity_name);
 }
-
-
 
 
 window.onload = _ => {
@@ -81,31 +78,23 @@ window.onload = _ => {
   });
 
   //create bullet entity.
-  bullet = {
-    name: "Bullet",
+  bullet = addEntity ("bullet", {
     visible: true,
     height: 50,
     width: 50,
     x: canvas.width,
     y: Math.random() * canvas.height,
     image: null,
-  }
+  });
 
-  wall = {
+  wall = addEntity ("wall", {
     name: "Wall",
     visible: true,
     height: 300,
     width: 500,
     x: canvas.width,
     y: 0
-  }
-
-
-  //Add this to the list of entities.
-  entities.push(player);
-  entities.push(bullet);
-  entities.push(wall);
- 
+  });
 
   //Start the gameloop.
   gameLoop();
@@ -115,7 +104,7 @@ window.onload = _ => {
 function updateMovement(){
   bullet.x -= 10;
   wall.x -= 2;
-
+}
 function spawnEntities(){
   addEntity("enemy-" + Date.now(), {
     visible: true,
@@ -127,8 +116,11 @@ function spawnEntities(){
   });
 }
 
-
 function updateMovement(){
+
+  bullet.x -= 10;
+  wall.x -= 2;
+
   Object.values(entities).forEach(e => {
     if(e.visible === true){
       if(e.type === "enemy"){
