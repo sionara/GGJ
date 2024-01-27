@@ -71,3 +71,7 @@ h6 {
 #stage {
   outline: 1px solid black;
 }
+
+#life-counter {
+  text-align: right;
+}
