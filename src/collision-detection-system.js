@@ -1,3 +1,6 @@
+console.log("collision-detection-system.js : loaded");
+
+
 function detectCollision() {
   Object.values(entities).forEach (e => {
     if (e.type != "player" && e.visible == true) {
