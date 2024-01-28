@@ -68,8 +68,8 @@ function detectCollision() {
             x: e.x,
             y: e.y,
 
-            xVelocity: rng() * 50 - 25,
-            yVelocity: rng() * 10 - 5,
+            xVelocity: rng() * 50 - 30,
+            yVelocity: rng() * 20 - 10,
 
             gravityEnabled: true,
 
@@ -79,7 +79,11 @@ function detectCollision() {
             spriteHeight: 455,
             spriteWidth: 500,
           });
+
+
         }
+
+        oneShotAudio("money-loss");
       }
     }  
   });

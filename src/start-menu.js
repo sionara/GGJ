@@ -19,6 +19,7 @@ function setupStartMenu(){
       pause_toggle = false;
 
       loopAudio("bgm");
+      oneShotAudio("intro");
   });
 
 }

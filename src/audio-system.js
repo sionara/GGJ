@@ -10,44 +10,64 @@ function setupAudioSystem(){
   sounds = {
     "boing" : {
       audio : new Audio("./sounds/boing.mp3"),
+      volume: 1.0,
       looping : false,
     },
 
     "car-honk" : {
       audio : new Audio("./sounds/car-honk-sound.mp3"),
+      volume: 1.0,
       looping : false,
     },
 
     "game-over" : {
       audio : new Audio("./sounds/game-over-sound.mp3"),
+      volume: 1.0,
       looping : false,
     },
 
     "hit-brick" : {
       audio : new Audio("./sounds/hit-brick-sound.mp3"),
+      volume: 1.0,
       looping : false,
     },
 
     "jet-pack" : {
       audio : new Audio("./sounds/jet-pack-sound.mp3"),
+      volume: 1.0,
       looping : false,
     },
 
     "ka-ching" : {
       audio : new Audio("./sounds/ka-ching-sound.mp3"),
+      volume: 1.0,
       looping : false,
     },
 
     "bgm" : {
       audio : new Audio("./sounds/bgm.mp3"),
+      volume: 0.6,
       looping : false,
     },
 
 
     "game-over" : {
       audio : new Audio("./sounds/game-over-sound.mp3"),
+      volume: 1.0,
       looping : false,
     },
+
+    "intro" : {
+      audio : new Audio("./sounds/intro.mp3"),
+      volume: 1.0,
+      looping : false,
+    },
+
+    "money-loss" : {
+      audio : new Audio("./sounds/money-loss.mp3"),
+      volume: 1.0,
+      looping : false,
+    }
   };
 }
 
@@ -55,6 +75,7 @@ function setupAudioSystem(){
 function oneShotAudio(sound_name){
   //Clone the audio node and play it.
   let sound_copy = sounds[sound_name].audio.cloneNode(true);
+  sound_copy.volume = sounds[sound_name].volume;
 
 
   function handlePlayback(){
@@ -82,6 +103,7 @@ function loopAudio(sound_name){
   if(sounds[sound_name].looping === false){
 
     //play the audio
+    sounds[sound_name].audio.volume = sounds[sound_name].volume;
     sounds[sound_name].audio.play();
 
 
