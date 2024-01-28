@@ -17,6 +17,11 @@ function detectCollision() {
           if (e.type === "wall") {
             osap_wall = null;
           }
+
+          
+          oneShotAudio("boing");
+
+
           //remove a life 
           lifeTotal -= 1;
           // delete that entity from game
