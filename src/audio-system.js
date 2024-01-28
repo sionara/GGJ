@@ -10,50 +10,50 @@ function setupAudioSystem(){
   sounds = {
     "boing" : {
       audio : new Audio("./sounds/boing.mp3"),
-      volume: 1.0,
+      volume: 0.75,
       looping : false,
     },
 
     "car-honk" : {
       audio : new Audio("./sounds/car-honk-sound.mp3"),
-      volume: 1.0,
+      volume: 0.5,
       looping : false,
     },
 
     "game-over" : {
       audio : new Audio("./sounds/game-over-sound.mp3"),
-      volume: 1.0,
+      volume: 0.5,
       looping : false,
     },
 
     "hit-brick" : {
       audio : new Audio("./sounds/hit-brick-sound.mp3"),
-      volume: 1.0,
+      volume: 0.75,
       looping : false,
     },
 
     "jet-pack" : {
       audio : new Audio("./sounds/jet-pack-sound.mp3"),
-      volume: 1.0,
+      volume: 0.75,
       looping : false,
     },
 
     "ka-ching" : {
       audio : new Audio("./sounds/ka-ching-sound.mp3"),
-      volume: 1.0,
+      volume: 0.75,
       looping : false,
     },
 
     "bgm" : {
       audio : new Audio("./sounds/bgm.mp3"),
-      volume: 0.6,
+      volume: 0.3,
       looping : false,
     },
 
 
     "game-over" : {
       audio : new Audio("./sounds/game-over-sound.mp3"),
-      volume: 1.0,
+      volume: 0.75,
       looping : false,
     },
 
