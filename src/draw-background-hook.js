@@ -11,11 +11,11 @@ const background = {
 
 function drawBackground() {
   const torontoLayer = new Image();
-  torontoLayer.src = "images/layer-2.png";
+  torontoLayer.src = "images/toronto.png";
   const cloudLayer = new Image();
   cloudLayer.src = "images/layer-3.png";
   const floorLayer = new Image();
-  floorLayer.src = "images/layer-5.png";
+  floorLayer.src = "images/floor.png";
 
   background.floorX -= 5;
   background.cloudX -= 1;
