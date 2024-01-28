@@ -2,9 +2,9 @@ console.log("bullet-system.js : loaded");
 
 
 //Balance settings
-const BULLET_SPAWN_RATE = 0.005;
-const SHINY_BULLET_SPAWN_RATE = 0.003;
-const HOTDOG_SPAWN_RATE = 0.004;
+const BULLET_SPAWN_RATE = 0.01;
+const SHINY_BULLET_SPAWN_RATE = 0.009;
+const HOTDOG_SPAWN_RATE = 0.008;
 
 function spawnBullets(){
 

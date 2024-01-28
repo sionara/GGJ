@@ -1,7 +1,7 @@
 console.log("movement-system.js : loaded");
 
 
-const GRAVITY_CONSTANT = 5;
+const GRAVITY_CONSTANT = 10;
 
 
 function updateMovement(){

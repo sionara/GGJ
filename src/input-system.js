@@ -29,7 +29,7 @@ function setupInputSystem(){
 
 function processInput(){
   if(input_states.KeyW.keydown === true){
-    player.yVelocity = -10;
+    player.yVelocity = -20;
 
 
     loopAudio("jet-pack");
