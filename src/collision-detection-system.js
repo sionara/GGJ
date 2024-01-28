@@ -42,5 +42,9 @@ function detectCollision() {
       const overlap = (player.y) - 500;
       player.y -= overlap;
     }
+
+    if (player.y <= 0) {
+      player.y = 0;
+    }
   }
 }
