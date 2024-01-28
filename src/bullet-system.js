@@ -9,7 +9,7 @@ const HOTDOG_SPAWN_RATE = 0.004;
 function spawnBullets(){
 
   if(Math.random() < BULLET_SPAWN_RATE){
-    addEntity("bullet-" + Date.now(), {
+    addEntity("drink-" + Date.now(), {
       visible: true,
 
       type: "bullet",
@@ -35,7 +35,7 @@ function spawnBullets(){
     addEntity("pizza-" + Date.now(), {
       visible: true,
 
-      type: "pizza",
+      type: "bullet",
 
       height: 50,
       width: 50,
@@ -54,7 +54,7 @@ function spawnBullets(){
     }); } 
     if (Math.random() < HOTDOG_SPAWN_RATE) {
 
-      addEntity("bullet-" + Date.now(), {
+      addEntity("hotdog-" + Date.now(), {
         visible: true,
 
         type: "bullet",

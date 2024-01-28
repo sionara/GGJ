@@ -17,6 +17,8 @@ function setupStartMenu(){
   
       //Start gameloop on click of play button
       pause_toggle = false;
+
+      loopAudio("bgm");
   });
 
 }

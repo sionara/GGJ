@@ -37,6 +37,11 @@ function setupAudioSystem(){
       audio : new Audio("./sounds/ka-ching-sound.mp3"),
       looping : false,
     },
+
+    "bgm" : {
+      audio : new Audio("./sounds/bgm.mp3"),
+      looping : false,
+    },
   };
 }
 
@@ -68,10 +73,13 @@ function oneShotAudio(sound_name){
 
 
 function loopAudio(sound_name){
-  if(sounds[sound_name].audio.looping === false){
+  if(sounds[sound_name].looping === false){
 
     //play the audio
     sounds[sound_name].audio.play();
+
+
+    console.log("playing bgm");
 
 
     function handleEnded(){
