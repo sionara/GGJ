@@ -25,6 +25,8 @@
   <script src="src/rendering-system.js"></script>
   <script src="src/draw-background-hook.js"></script>
 
+  
+
 
   <!--load main last because main will depend on all the above scripts-->
   <script src="main.js"></script>
@@ -36,8 +38,12 @@
     <canvas id="stage">
       <p id="life-counter"> Life </p>
     </canvas>
-    
+    <div id="start">
+      <h1>Temp Title</h1>
+      <button type="button" id="btn">Play!</button>
+    </div>
   </main>
 </body>
+<script src="src/start-menu.js"></script>
 
 </html>
