@@ -22,6 +22,8 @@ function gameLoop(){
 
 
   //Then apply entity removing systems.
+  despawnWalls();
+  despawnBullets();
   gameOver();
 
 

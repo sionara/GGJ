@@ -1,25 +1,27 @@
 console.log("movement-system.js : loaded");
 
 
+const GRAVITY_CONSTANT = 5;
+
+
 function updateMovement(){
   Object.values(entities).forEach(e => {
 
     if(e.visible === true){
 
-      e.x += e.xVelocity;
-      e.y += e.yVelocity;
 
-      if(e.type === "bullet"){
-        if(e.x < 100) deleteEntity(e.name);
+      x_velocity = e.xVelocity;
+      y_velocity = e.yVelocity;
+
+
+      //Check if this entity is affected by gravity.
+      if(e.gravityEnabled === true){
+        y_velocity += GRAVITY_CONSTANT; 
       }
 
-      if(e.type === "wall"){
-        if(e.x < -300){
 
-          deleteEntity(e.name);
-          osap_wall = null;
-        }
-      }
+      e.x += x_velocity;
+      e.y += y_velocity;
 
     }
     

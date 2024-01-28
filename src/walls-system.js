@@ -7,6 +7,9 @@ console.log("walls-system.js : loaded");
 let osap_wall = null;
 
 
+const WALLS_SPAWN_RATE = 0.01;
+
+
 function spawnWalls(){
   if(Math.random() < WALLS_SPAWN_RATE && osap_wall === null){
 
@@ -23,5 +26,18 @@ function spawnWalls(){
       spriteHeight: 368,
       spriteWidth: 612,
     });
+  }
+}
+
+
+function despawnWalls(){
+  if(
+    osap_wall !== null &&
+    osap_wall.x < 0
+  ){
+
+    console.log("deleting osap wall");
+    deleteEntity(osap_wall.name);
+    osap_wall = null;
   }
 }

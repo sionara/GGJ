@@ -17,6 +17,7 @@ function setupPlayerSystem(){
     y: 0,
     yVelocity: 0,
     xVelocity: 0,
+    gravityEnabled: true,
     spriteSrc: "./images/hotdog.png",
     spriteHeight: 32,
     spriteWidth: 32,

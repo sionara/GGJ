@@ -4,7 +4,6 @@ console.log("bullet-system.js : loaded");
 //Balance settings
 const BULLET_SPAWN_RATE = 0.1;
 const SHINY_BULLET_SPAWN_RATE = 0.3;
-const WALLS_SPAWN_RATE = 0.01;
 
 
 function spawnBullets(){
@@ -50,4 +49,10 @@ function spawnBullets(){
 }
 
 
-
+function despawnBullets(){
+ Object.values(entities).forEach(e => {
+    if(e.type === "bullet"){
+      if(e.x < 100) deleteEntity(e.name);
+    }
+  });
+}
