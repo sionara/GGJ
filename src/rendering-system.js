@@ -25,8 +25,8 @@ function render() {
   renderHUD();
   Object.values(entities).forEach(e => {
     if(e.visible === true){
-      canvas_context.strokeStyle = "green";
-      canvas_context.strokeRect(e.x, e.y, e.width, e.height);
+      // canvas_context.strokeStyle = "green";
+      // canvas_context.strokeRect(e.x, e.y, e.width, e.height);
 
       if (e.type === "text") {
         canvas_context.font = e.font ?? "15px 'Press Start 2P'";
