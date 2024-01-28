@@ -50,6 +50,36 @@ function detectCollision() {
          
           // delete that entity from game
           deleteEntity(e.name);
+
+
+        //Spawn a bunch of money.
+        for(let i = 0; i < 10; i++){
+
+          const rng = new Math.seedrandom(`${Date.now() + Math.random()}`);
+
+          addEntity("lost-money-" + Date.now(), {
+            visible: true,
+
+            type: "vfx",
+
+            height: 50,
+            width: 50,
+
+            x: e.x,
+            y: e.y,
+
+            xVelocity: rng() * 50 - 25,
+            yVelocity: rng() * 10 - 5,
+
+            gravityEnabled: true,
+
+            collisionEnabled: false,
+
+            spriteSrc: "./images/money.gif",
+            spriteHeight: 455,
+            spriteWidth: 500,
+          });
+        }
       }
     }  
   });

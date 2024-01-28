@@ -16,10 +16,13 @@ let pause_toggle = false;
 
 function setupInputSystem(){
   document.addEventListener('keyup', e => {
-    input_states[e.code] = { keydown: false, keypressed: false  };
+    input_states[e.code] = {
+      keydown: false, 
+      keypressed: input_states[e.code].keydown === true ? true : false  
+    };
   });
   document.addEventListener('keydown', e => {
-    input_states[e.code] = { keydown: true, keypressed: input_states[e.code].keydown === true ? false : true};
+    input_states[e.code] = { keydown: true, keypressed: false};
   });
 }
 
@@ -27,12 +30,20 @@ function setupInputSystem(){
 function processInput(){
   if(input_states.KeyW.keydown === true){
     player.yVelocity = -10;
+
+
+    loopAudio("jet-pack");
    } 
   // else if (input_states.KeyS.keydown === true) {
   //   player.yVelocity = 10;
   // }
   else {
-    player.yVelocity = 0;
+    if (player) {
+      player.yVelocity = 0;
+    }
+
+    pauseAudio("jet-pack");
+    
   }
 
 

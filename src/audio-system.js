@@ -42,6 +42,12 @@ function setupAudioSystem(){
       audio : new Audio("./sounds/bgm.mp3"),
       looping : false,
     },
+
+
+    "game-over" : {
+      audio : new Audio("./sounds/game-over-sound.mp3"),
+      looping : false,
+    },
   };
 }
 
@@ -96,5 +102,24 @@ function loopAudio(sound_name){
     //Set the flag so calling this again doesn't do anything.
     sounds[sound_name].audio.looping = true;
   }
+  else {
 
+    //play the audio
+    sounds[sound_name].audio.play();
+  }
+
+}
+
+
+function pauseAudio(sound_name){
+
+  //pause the audio
+  sounds[sound_name].audio.pause();
+}
+
+
+function resumeAudio(sound_name){
+
+  //resume the audio
+  sounds[sound_name].audio.play();
 }

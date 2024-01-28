@@ -115,3 +115,25 @@ h6 {
       transform: scale(1);
   }
 }
+
+#gameover{
+  display: none;
+  background-image: url("images/background.png");
+  height: 720px;
+  font-family: 'Honk', sans-serif;
+  font-size: 80px;
+  text-align: center;
+}
+
+#gameoverContent{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 600px;
+}
+
+#survivalMsg{
+  /* font-family: 'Sixtyfour', sans-serif; */
+  font-size: 50px;
+}
