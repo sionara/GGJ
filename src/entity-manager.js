@@ -21,8 +21,7 @@ function addEntity(entity_name, components_object){
     name: entity_name,
     ...components_object
   };
-
-
+  
   entities_to_add.push(entity);
   return entity;
 }
