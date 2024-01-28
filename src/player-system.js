@@ -16,7 +16,9 @@ function setupPlayerSystem(){
     height: 100,
     width: 100,
 
-    x: 0,
+    sx: 128,
+    sy: 0,
+    x: 50,
     y: 0,
 
     yVelocity: 0,
@@ -27,9 +29,9 @@ function setupPlayerSystem(){
     //TODO: update to real collision detection.
     hitsGround: true,
 
-    spriteSrc: "./images/hotdog.png",
-    spriteHeight: 32,
-    spriteWidth: 32,
+    spriteSrc: "./images/redbullv2.png",
+    spriteHeight: 110,
+    spriteWidth: 128 - 40,
   });
 
 }

@@ -2,41 +2,59 @@ console.log("bullet-system.js : loaded");
 
 
 //Balance settings
-const BULLET_SPAWN_RATE = 0.1;
-const SHINY_BULLET_SPAWN_RATE = 0.3;
-
+const BULLET_SPAWN_RATE = 0.005;
+const SHINY_BULLET_SPAWN_RATE = 0.003;
+const HOTDOG_SPAWN_RATE = 0.004;
 
 function spawnBullets(){
 
   if(Math.random() < BULLET_SPAWN_RATE){
+    addEntity("drink-" + Date.now(), {
+      visible: true,
 
-    if(Math.random() < SHINY_BULLET_SPAWN_RATE){
+      type: "bullet",
 
-      addEntity("bullet-" + Date.now(), {
-        visible: true,
+      height: 50,
+      width: 50,
 
-        type: "bullet",
+      x: canvas.width,
+      y: Math.random() * (600 - 100)+100,
 
-        height: 183,
-        width: 288,
+      xVelocity: -10,
+      yVelocity: 0,
 
-        x: canvas.width,
-        y: Math.random() * canvas.height,
+      collisionEnabled: true,
 
-        xVelocity: -20,
-        yVelocity: 0,
+      spriteSrc: "./images/drink.png",
+      spriteHeight: 32,
+      spriteWidth: 32,
+    });
+  } 
+  if (Math.random() < SHINY_BULLET_SPAWN_RATE) {
 
-        collisionEnabled: true,
+    addEntity("pizza-" + Date.now(), {
+      visible: true,
 
-        spriteSrc: "./images/car.png",
-        spriteHeight: 183,
-        spriteWidth: 288,
-      });
+      type: "bullet",
 
-    }
-    else {
+      height: 50,
+      width: 50,
 
-      addEntity("bullet-" + Date.now(), {
+      x: canvas.width,
+      y: Math.random() * (600 - 100) + 100,
+
+      xVelocity: -10,
+      yVelocity: 0,
+
+      collisionEnabled: true,
+
+      spriteSrc: "./images/pizza.png",
+      spriteHeight: 32,
+      spriteWidth: 32,
+    }); } 
+    if (Math.random() < HOTDOG_SPAWN_RATE) {
+
+      addEntity("hotdog-" + Date.now(), {
         visible: true,
 
         type: "bullet",
@@ -45,7 +63,7 @@ function spawnBullets(){
         width: 50,
 
         x: canvas.width,
-        y: Math.random() * canvas.height,
+        y: (Math.random() * (600 - 100)+100),
 
         xVelocity: -10,
         yVelocity: 0,
@@ -60,7 +78,6 @@ function spawnBullets(){
     }
 
   }
-}
 
 
 function despawnBullets(){

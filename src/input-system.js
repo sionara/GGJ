@@ -27,23 +27,27 @@ function setupInputSystem(){
 function processInput(){
   if(input_states.KeyW.keydown === true){
     player.yVelocity = -10;
-  } else if (input_states.KeyS.keydown === true) {
-    player.yVelocity = 10;
-  }
+   } 
+  // else if (input_states.KeyS.keydown === true) {
+  //   player.yVelocity = 10;
+  // }
   else {
-    player.yVelocity = 0;
+    if (player) {
+      player.yVelocity = 0;
+    }
+    
   }
 
 
-  if (input_states.KeyA.keydown === true) {
-    player.xVelocity = -10;
-  } 
-  else if (input_states.KeyD.keydown === true) {
-    player.xVelocity = 10;
-  }
-  else {
-    player.xVelocity = 0;
-  }
+  // if (input_states.KeyA.keydown === true) {
+  //   player.xVelocity = -10;
+  // } 
+  // else if (input_states.KeyD.keydown === true) {
+  //   player.xVelocity = 10;
+  // }
+  // else {
+  //   player.xVelocity = 0;
+  // }
 
 
   if(input_states.KeyP.keypressed === true){

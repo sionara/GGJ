@@ -7,7 +7,7 @@ console.log("walls-system.js : loaded");
 let osap_wall = null;
 
 
-const WALLS_SPAWN_RATE = 0.01;
+const WALLS_SPAWN_RATE = 0.03;
 
 
 function spawnWalls(){
@@ -18,13 +18,13 @@ function spawnWalls(){
 
       type: "wall",
 
-      height: 190,
+      height: 100,
       width: 315,
 
       x: canvas.width,
-      y: canvas.height - 190,
+      y: 0,
 
-      xVelocity: -5,
+      xVelocity: -10,
       yVelocity: 0,
 
       collisionEnabled: true,

@@ -13,13 +13,32 @@ function detectCollision() {
         player.x <= e.x + e.width &&
         player.y + player.height >= e.y &&
         player.y <= e.y + e.height) {
+
+
           //if collision was with a wall, reset wall counter
-          if (e.type === "wall") {
+          if (e.name.startsWith("wall") === true) {
             osap_wall = null;
+            oneShotAudio("hit-brick");
+          } 
+
+          if (e.name.startsWith("car") === true) {
+            car = null;
+            oneShotAudio("car-honk");
+          }
+
+          if (e.name.startsWith("pizza") === true) {
+            oneShotAudio("boing");
+          }
+
+          if (e.name.startsWith("drink") === true) {
+            oneShotAudio("boing");
+          }
+
+          if (e.name.startsWith("hotdog") === true) {
+            oneShotAudio("boing");
           }
 
           
-          oneShotAudio("boing");
 
 
           //remove a life 
@@ -41,6 +60,10 @@ function detectCollision() {
       //Calculate the overlap.
       const overlap = (player.y) - 500;
       player.y -= overlap;
+    }
+
+    if (player.y <= 0) {
+      player.y = 0;
     }
   }
 }

@@ -25,11 +25,13 @@ function gameLoop(){
     //Then apply entity spawning systems.
     spawnBullets();
     spawnWalls();
+    spawnCars();
   
   
     //Then apply entity removing systems.
     despawnWalls();
     despawnBullets();
+    despawnCars();
     gameOver();
   
   
