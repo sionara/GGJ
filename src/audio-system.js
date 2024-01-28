@@ -8,14 +8,42 @@ function setupAudioSystem(){
 
   //Preload all the necessary audio files.
   sounds = {
-    "boing" : new Audio("./sounds/boing.mp3"),
+    "boing" : {
+      audio : new Audio("./sounds/boing.mp3"),
+      looping : false,
+    },
+
+    "car-honk" : {
+      audio : new Audio("./sounds/car-honk-sound.mp3"),
+      looping : false,
+    },
+
+    "game-over" : {
+      audio : new Audio("./sounds/game-over-sound.mp3"),
+      looping : false,
+    },
+
+    "hit-brick" : {
+      audio : new Audio("./sounds/hit-brick-sound.mp3"),
+      looping : false,
+    },
+
+    "jet-pack" : {
+      audio : new Audio("./sounds/jet-pack-sound.mp3"),
+      looping : false,
+    },
+
+    "ka-ching" : {
+      audio : new Audio("./sounds/ka-ching-sound.mp3"),
+      looping : false,
+    },
   };
 }
 
 
 function oneShotAudio(sound_name){
   //Clone the audio node and play it.
-  let sound_copy = sounds[sound_name].cloneNode(true);
+  let sound_copy = sounds[sound_name].audio.cloneNode(true);
 
 
   function handlePlayback(){
@@ -40,5 +68,25 @@ function oneShotAudio(sound_name){
 
 
 function loopAudio(sound_name){
-  sounds[sound_name].play();
+  if(sounds[sound_name].audio.looping === false){
+
+    //play the audio
+    sounds[sound_name].audio.play();
+
+
+    function handleEnded(){
+
+      //Play the sound again when it has ended.
+      sounds[sound_name].audio.play();
+    }
+
+
+    //loop it
+    sounds[sound_name].audio.addEventListener("ended", handleEnded);
+
+
+    //Set the flag so calling this again doesn't do anything.
+    sounds[sound_name].audio.looping = true;
+  }
+
 }
