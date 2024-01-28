@@ -30,6 +30,9 @@ function setupInputSystem(){
 function processInput(){
   if(input_states.KeyW.keydown === true){
     player.yVelocity = -10;
+
+
+    loopAudio("jet-pack");
    } 
   // else if (input_states.KeyS.keydown === true) {
   //   player.yVelocity = 10;
@@ -38,6 +41,8 @@ function processInput(){
     if (player) {
       player.yVelocity = 0;
     }
+
+    pauseAudio("jet-pack");
     
   }
 

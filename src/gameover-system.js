@@ -23,5 +23,7 @@ function gameOver() {
     gameOverScreen.style.display = "block";
     start.style.display = "none";
     
+    pauseAudio("bgm");
+    oneShotAudio("game-over");
   }
 }

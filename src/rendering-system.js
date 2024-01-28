@@ -59,7 +59,7 @@ function render() {
           // console.log("input_states.KeyW.keydown",input_states.KeyW.keydown);
           currPlayerImageIndex = frameCounter % 2;
         }
-        console.log("currPlayerImageIndex",currPlayerImageIndex);
+        //console.log("currPlayerImageIndex",currPlayerImageIndex);
         canvas_context.drawImage(
           sprite, 
           e.sx * currPlayerImageIndex, e.sy, 
