@@ -5,6 +5,7 @@ window.onload = _ => {
   setupInputSystem();
   setupPlayerSystem();
   setupAudioSystem();
+  setupStartMenu();
 
   //Start the gameloop.
   gameLoop();
