@@ -1,14 +1,24 @@
-var btn = document.getElementById("btn");
 
-btn.addEventListener("click", function play(){
-    
-    var stage = document.getElementById("stage");
-    var start = document.getElementById("start");
+function setupStartMenu(){
 
-    btn.style.animation = "paused";
-    stage.style.display = "block";
-    start.style.display = "none";
+  //Pause the game by default.
+  pause_toggle = true;
 
-    //Start gameloop on click of play button
-    gameLoop();
-});
+
+  var btn = document.getElementById("btn");
+  btn.addEventListener("click", function play(){
+      
+      var stage = document.getElementById("stage");
+      var start = document.getElementById("start");
+  
+      btn.style.animation = "paused";
+      stage.style.display = "block";
+      start.style.display = "none";
+  
+      //Start gameloop on click of play button
+      pause_toggle = false;
+  });
+
+}
+
+

@@ -18,11 +18,11 @@ function spawnWalls(){
 
       type: "wall",
 
-      height: 368,
-      width: 612,
+      height: 190,
+      width: 315,
 
       x: canvas.width,
-      y: canvas.height - 368,
+      y: canvas.height - 190,
 
       xVelocity: -5,
       yVelocity: 0,
@@ -30,8 +30,8 @@ function spawnWalls(){
       collisionEnabled: true,
 
       spriteSrc: "./images/osap.jpg",
-      spriteHeight: 368,
-      spriteWidth: 612,
+      spriteHeight: 190,
+      spriteWidth: 315,
     });
   }
 }
