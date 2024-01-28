@@ -3,19 +3,23 @@ console.log("input-system.js : loaded");
 
 //Object containing the state of input keys.
 const input_states = {
-  "KeyW": { keydown: false },
-  "KeyS": { keydown: false },
-  "KeyA": { keydown: false },
-  "KeyD": { keydown: false },
+  "KeyW": { keydown: false, keypressed: false },
+  "KeyS": { keydown: false, keypressed: false },
+  "KeyA": { keydown: false, keypressed: false },
+  "KeyD": { keydown: false, keypressed: false },
+  "KeyP": { keydown: false, keypressed: false },
 };
+
+
+let pause_toggle = false;
 
 
 function setupInputSystem(){
   document.addEventListener('keyup', e => {
-    input_states[e.code] = { keydown: false };
+    input_states[e.code] = { keydown: false, keypressed: false  };
   });
   document.addEventListener('keydown', e => {
-    input_states[e.code] = { keydown: true };
+    input_states[e.code] = { keydown: true, keypressed: input_states[e.code].keydown === true ? false : true};
   });
 }
 
@@ -39,5 +43,10 @@ function processInput(){
   }
   else {
     player.xVelocity = 0;
+  }
+
+
+  if(input_states.KeyP.keypressed === true){
+    pause_toggle = !pause_toggle;
   }
 }

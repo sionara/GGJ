@@ -15,28 +15,33 @@ function gameLoop(){
   //Process player input first on every frame.
   processInput();
 
+  if(pause_toggle === false){
 
-  //Then apply entity spawning systems.
-  spawnBullets();
-  spawnWalls();
+    //Only run these systems when the game is unpaused.
+    
 
-
-  //Then apply entity removing systems.
-  despawnWalls();
-  despawnBullets();
-  gameOver();
-
-
-  //Then apply movement systems.
-  updateMovement();
-
-
-  //Then apply a collision detection step.
-  detectCollision();
-
-
-  //Then apply miscellaneous game logic systems.
-
+    //Then apply entity spawning systems.
+    spawnBullets();
+    spawnWalls();
+  
+  
+    //Then apply entity removing systems.
+    despawnWalls();
+    despawnBullets();
+    gameOver();
+  
+  
+    //Then apply movement systems.
+    updateMovement();
+  
+  
+    //Then apply a collision detection step.
+    detectCollision();
+  
+  
+    //Then apply miscellaneous game logic systems.
+  
+  }
   
   //Finally draw all the entities on the canvas.
   render();
