@@ -6,7 +6,7 @@ window.onload = _ => {
   setupPlayerSystem();
 
   //Start the gameloop.
-  gameLoop();
+  // gameLoop();
 };
 
 
