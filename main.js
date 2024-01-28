@@ -8,6 +8,9 @@ let player = null;
 
 let osap_wall = null;
 
+//global life counter
+let lifeTotal = 5;
+
 
 //Balance settings
 const BULLET_SPAWN_RATE = 0.1;
@@ -76,6 +79,7 @@ window.onload = _ => {
 
   //Create player entity.
   player = addEntity("box", {
+    type: "player",
     visible: true,
     height: 100,
     width: 100,
@@ -318,12 +322,14 @@ function gameLoop(){
 
   //Then apply movement systems.
   updateMovement();
+  detectCollision();
 
 
   //Then apply a collision detection step.
   
 
   //Then apply miscellaneous game logic systems.
+  gameOver();
 
   
   //Finally draw all the entities on the canvas.
