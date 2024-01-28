@@ -10,7 +10,7 @@ function setupRenderingSystem(){
   canvas_context = canvas.getContext("2d");
 
   //Set the internal resolution of the canvas.
-  let height = $(window).height();
+  let height = 720; // put fixed height to fix game height regardless of screen size
   let width = $(window).width();
   canvas.width = width;
   canvas.height = height;

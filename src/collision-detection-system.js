@@ -16,6 +16,8 @@ function detectCollision() {
           //if collision was with a wall, reset wall counter
           if (e.type === "wall") {
             osap_wall = null;
+          } else if (e.type === "car") {
+            car = null;
           }
           //remove a life 
           lifeTotal -= 1;

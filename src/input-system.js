@@ -35,15 +35,15 @@ function processInput(){
   }
 
 
-  if (input_states.KeyA.keydown === true) {
-    player.xVelocity = -10;
-  } 
-  else if (input_states.KeyD.keydown === true) {
-    player.xVelocity = 10;
-  }
-  else {
-    player.xVelocity = 0;
-  }
+  // if (input_states.KeyA.keydown === true) {
+  //   player.xVelocity = -10;
+  // } 
+  // else if (input_states.KeyD.keydown === true) {
+  //   player.xVelocity = 10;
+  // }
+  // else {
+  //   player.xVelocity = 0;
+  // }
 
 
   if(input_states.KeyP.keypressed === true){
