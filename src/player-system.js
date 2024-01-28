@@ -16,7 +16,7 @@ function setupPlayerSystem(){
     height: 100,
     width: 100,
 
-    x: 0,
+    x: 50,
     y: 0,
 
     yVelocity: 0,
