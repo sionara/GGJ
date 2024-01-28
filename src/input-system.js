@@ -35,7 +35,10 @@ function processInput(){
   //   player.yVelocity = 10;
   // }
   else {
-    player.yVelocity = 0;
+    if (player) {
+      player.yVelocity = 0;
+    }
+    
   }
 
 

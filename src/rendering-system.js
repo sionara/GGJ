@@ -21,6 +21,7 @@ function render() {
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
 
   drawBackground();
+
   renderHUD();
   Object.values(entities).forEach(e => {
     if(e.visible === true){
@@ -41,6 +42,27 @@ function render() {
         canvas_context.drawImage(
           sprite, 
           0, 0, 
+          e.spriteWidth, e.spriteHeight, 
+          e.x, e.y, 
+          e.width, e.height
+        );
+      }
+
+      if(e.type === "player"){
+        const sprite = new Image();
+        sprite.src = e.spriteSrc;
+        let currPlayerImageIndex = 0;
+        if (input_states.KeyW.keydown === false) {
+          // console.log("input_states.KeyW.keydown",input_states.KeyW.keydown);
+          currPlayerImageIndex = 0;
+        } else {
+          // console.log("input_states.KeyW.keydown",input_states.KeyW.keydown);
+          currPlayerImageIndex = frameCounter % 2;
+        }
+        console.log("currPlayerImageIndex",currPlayerImageIndex);
+        canvas_context.drawImage(
+          sprite, 
+          e.sx * currPlayerImageIndex, e.sy, 
           e.spriteWidth, e.spriteHeight, 
           e.x, e.y, 
           e.width, e.height
