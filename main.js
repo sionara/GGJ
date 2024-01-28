@@ -8,6 +8,9 @@ let player = null;
 
 let osap_wall = null;
 
+//global life counter
+let lifeTotal = 5;
+
 
 //Balance settings
 const BULLET_SPAWN_RATE = 0.1;
@@ -80,6 +83,7 @@ window.onload = _ => {
 
   //Create player entity.
   player = addEntity("box", {
+    type: "player",
     visible: true,
     height: 100,
     width: 100,
@@ -210,10 +214,8 @@ function processInput(){
   }
 }
 
-
 function render() {
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
-
 
   Object.values(entities).forEach(e => {
     if(e.visible === true){
@@ -261,9 +263,11 @@ function gameLoop(){
   spawnBullets();
   spawnWalls();
   updateMovement();
+  detectCollision();
 
 
   render();
   updateEntities();
+  gameOver();
   requestAnimationFrame(gameLoop);
 }
