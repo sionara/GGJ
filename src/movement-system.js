@@ -10,13 +10,14 @@ function updateMovement(){
     if(e.visible === true){
 
 
-      x_velocity = e.xVelocity;
-      y_velocity = e.yVelocity;
+      x_velocity = e.xVelocity ?? 0;
+      y_velocity = e.yVelocity ?? 0;
 
 
       //Check if this entity is affected by gravity.
       if(e.gravityEnabled === true){
         y_velocity += GRAVITY_CONSTANT; 
+
       }
 
 

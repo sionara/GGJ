@@ -14,13 +14,20 @@ function spawnBullets(){
 
       addEntity("bullet-" + Date.now(), {
         visible: true,
+
         type: "bullet",
+
         height: 183,
         width: 288,
+
         x: canvas.width,
         y: Math.random() * canvas.height,
+
         xVelocity: -20,
         yVelocity: 0,
+
+        collisionEnabled: true,
+
         spriteSrc: "./images/car.png",
         spriteHeight: 183,
         spriteWidth: 288,
@@ -31,13 +38,20 @@ function spawnBullets(){
 
       addEntity("bullet-" + Date.now(), {
         visible: true,
+
         type: "bullet",
+
         height: 50,
         width: 50,
+
         x: canvas.width,
         y: Math.random() * canvas.height,
+
         xVelocity: -10,
         yVelocity: 0,
+
+        collisionEnabled: true,
+
         spriteSrc: "./images/hotdog.png",
         spriteHeight: 32,
         spriteWidth: 32,

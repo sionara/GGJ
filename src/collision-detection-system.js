@@ -3,7 +3,11 @@ console.log("collision-detection-system.js : loaded");
 
 function detectCollision() {
   Object.values(entities).forEach (e => {
-    if (e.type != "player" && e.visible == true) {
+    if (
+      e.type != "player" && 
+      e.visible == true &&
+      e.collisionEnabled === true
+    ) {
       
       if (player.x + player.width >= e.x && 
         player.x <= e.x + e.width &&
@@ -20,4 +24,13 @@ function detectCollision() {
       }
     }  
   });
+
+
+  if(player.hitsGround === true){
+    if(player.y >= 500){
+      //Calculate the overlap.
+      const overlap = (player.y) - 500;
+      player.y -= overlap;
+    }
+  }
 }

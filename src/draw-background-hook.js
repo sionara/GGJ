@@ -10,8 +10,6 @@ const background = {
 
 
 function drawBackground() {
-  canvas_context.clearRect(0, 0, canvas.width, canvas.height);
-
   const torontoLayer = new Image();
   torontoLayer.src = "images/layer-2.png";
   const cloudLayer = new Image();
