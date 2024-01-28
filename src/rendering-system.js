@@ -22,7 +22,7 @@ function render() {
 
   drawBackground();
 
-  renderHUD();
+
   Object.values(entities).forEach(e => {
     if(e.visible === true){
       // canvas_context.strokeStyle = "green";
@@ -70,4 +70,6 @@ function render() {
       }
     }
   });
+
+  renderHUD();
 }
