@@ -112,8 +112,6 @@ function spawnWalls(){
   }
 }
 
-function updateSize() {}
-
 
 function spawnBullets(){
 
@@ -306,15 +304,36 @@ function updateEntities(){
 
 
 function gameLoop(){
+
+  //Process player input first on every frame.
   processInput();
 
 
+  //Then apply entity spawning systems.
   spawnBullets();
   spawnWalls();
+
+  //Then apply entity removing systems.
+  
+
+  //Then apply movement systems.
   updateMovement();
 
+
+  //Then apply a collision detection step.
   
+
+  //Then apply miscellaneous game logic systems.
+
+  
+  //Finally draw all the entities on the canvas.
   render();
+
+
+  //Update the container of active entities in the game.
   updateEntities();
+
+
+  //Call the next update frame.
   requestAnimationFrame(gameLoop);
 }
