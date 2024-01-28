@@ -27,9 +27,10 @@ function setupInputSystem(){
 function processInput(){
   if(input_states.KeyW.keydown === true){
     player.yVelocity = -10;
-  } else if (input_states.KeyS.keydown === true) {
-    player.yVelocity = 10;
-  }
+   } 
+  // else if (input_states.KeyS.keydown === true) {
+  //   player.yVelocity = 10;
+  // }
   else {
     player.yVelocity = 0;
   }

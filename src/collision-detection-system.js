@@ -19,8 +19,18 @@ function detectCollision() {
           } else if (e.type === "car") {
             car = null;
           }
+
+          
+          oneShotAudio("boing");
+
+
           //remove a life 
           lifeTotal -= 1;
+          if (moneyHpList.length > 0 && !window.location.hash.includes("#debug")) {
+            console.debug("🚀 ~ Object.values ~ moneyHpList.length:", moneyHpList.length)
+            deleteEntity(moneyHpList.pop().name);
+          }
+         
           // delete that entity from game
           deleteEntity(e.name);
       }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&family=Sixtyfour&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 /*
   1. Use a more-intuitive box-sizing model.
 */
@@ -70,8 +72,46 @@ h6 {
 
 #stage {
   outline: 1px solid black;
+  display: none;
 }
 
 #life-counter {
   text-align: right;
+}
+
+#start{
+  display: flex;
+  background-image: url("images/background.png");
+  height: 720px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Honk', sans-serif;
+  font-size: 80px;
+  text-align: center;
+}
+
+#btn{
+  font-family: 'Sixtyfour', sans-serif;
+  border-radius: 20px;
+  font-size: 50px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border: none;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  animation: start-btn-pulse 1.5s infinite;
+}
+
+@keyframes start-btn-pulse{
+  0%{
+      transform: scale(1);
+  }
+  50%{
+      transform: scale(1.1);
+  }
+  100%{
+      transform: scale(1);
+  }
 }

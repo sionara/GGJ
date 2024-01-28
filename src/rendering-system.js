@@ -21,12 +21,17 @@ function render() {
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
 
   drawBackground();
-
+  renderHUD();
   Object.values(entities).forEach(e => {
     if(e.visible === true){
       canvas_context.strokeStyle = "green";
       canvas_context.strokeRect(e.x, e.y, e.width, e.height);
 
+      if (e.type === "text") {
+        canvas_context.font = e.font ?? "15px 'Press Start 2P'";
+        canvas_context.fillStyle = "Green";
+        canvas_context.fillText(e.textContent, e.x, e.y);
+      }
 
       if(e.hasOwnProperty("spriteSrc")){
         const sprite = new Image();
