@@ -268,6 +268,7 @@ function drawBackground() {
 function render() {
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
 
+  drawBackground();
 
   Object.values(entities).forEach(e => {
     if(e.visible === true){
