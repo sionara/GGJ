@@ -22,6 +22,7 @@ function gameOver() {
     stage.style.display = "none";
     gameOverScreen.style.display = "block";
     start.style.display = "none";
+    gameStart = false;
     
     pauseAudio("bgm");
     oneShotAudio("game-over");

@@ -1,6 +1,6 @@
 console.log("hud-system.js : loaded");
 const moneyHpList = [];
-
+let gameStart = false;
 /**
  * Tracks how long the player can survive the game.
  * @type {number}
@@ -23,17 +23,19 @@ function renderHUD() {
 
 const renderAge = function() {
   // Increase the time every 60 frames
-  if (frameCounter % 60 === 0) {
-    survivalTime++;
+  if (gameStart) {  
+    if (frameCounter % 60 === 0) {
+      survivalTime++;
+    }
+    frameCounter++;
+    addEntity("player-age", {
+      visible: true,
+      textContent: `Time survived: ${survivalTime} s`,
+      type: "text",
+      x: 30,
+      y: 120,
+    });
   }
-  frameCounter++;
-  addEntity("player-age", {
-    visible: true,
-    textContent: `Time survived: ${survivalTime} s`,
-    type: "text",
-    x: 30,
-    y: 120,
-  });
 }
 
 const renderLifeTitle = function() {

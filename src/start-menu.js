@@ -18,6 +18,8 @@ function setupStartMenu(){
       //Start gameloop on click of play button
       pause_toggle = false;
 
+      //check to see that start btn was pressed
+      gameStart = true;
       loopAudio("bgm");
       oneShotAudio("intro");
   });
