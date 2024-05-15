@@ -10,9 +10,9 @@
 
     <script src="src/input-system.js"></script>
 
-  <script src="src/bullet-system.js"></script>
+    <script src="src/bullet-system.js"></script>
 
-  <script src="src/car-system.js"></script>
+    <script src="src/car-system.js"></script>
 
     <script src="src/walls-system.js"></script>
 
@@ -26,33 +26,37 @@
     <script src="src/hud-system.js"></script>
     <script src="src/rendering-system.js"></script>
     <script src="src/draw-background-hook.js"></script>
-   
-  <script src="src/audio-system.js"></script>
 
-  <script src="src/start-menu.js"></script>
-  <script src="seedrandom.min.js"></script>
+    <script src="src/audio-system.js"></script>
 
+    <script src="src/start-menu.js"></script>
+    <script src="seedrandom.min.js"></script>
 
     <!--load main last because main will depend on all the above scripts-->
     <script src="main.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
   </head>
 
-<body>
-  <main>
-    <canvas id="stage"></canvas>
-    <div id="start">
-      <h1>Bill-Evader</h1>
-      <button type="button" id="btn">Play!</button>
-    </div>
-    <div id="gameover">
-      <div id="gameoverContent">
-        <h2>Game Over...</h2>
-        <p id="survivalMsg">Survival Time: <span id="survivalTime"></span> Seconds</p>
+  <body>
+    <main>
+      <canvas id="stage"></canvas>
+      <div id="start">
+        <h1>Bill-Evader</h1>
+        <button type="button" id="btn">Play!</button>
+        <div id="instructions">
+          How to Play: Press W key to move Bill up and dodge ALL incoming
+          objects!
+        </div>
       </div>
-    </div>
-  </main>
-</body>
-
+      <div id="gameover">
+        <div id="gameoverContent">
+          <h2>Game Over...</h2>
+          <p id="survivalMsg">
+            Survival Time: <span id="survivalTime"></span> Seconds
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
